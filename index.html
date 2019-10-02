@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>RGB and HEX Color Codes</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">RGB and HEX Color Codes</h1>
+            <p class="lead"><a href="https://www.youtube.com/channel/UCpVXk1S3l7gidMxBhkwsGMw" target="_blank">Major Mango on Youtube</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="slider-container">
+            <div class="row">
+                <div class="col-md-4">
+                        <b>Red</b><br><br>
+                        <input type="range" name="r" id="r" class="r" value="0" min="0" max="255" oninput="update()">
+                </div>
+                <div class="col-md-4">
+                        <b>Green</b><br><br>
+                        <input type="range" name="r" id="g" class="g" value="0" min="0" max="255" oninput="update()">
+                </div>
+                <div class="col-md-4">
+                        <b>Blue</b><br><br>
+                        <input type="range" name="r" id="b" class="b" value="0" min="0" max="255" oninput="update()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block" id="block"></div>
+                </div>
+            </div>
+        </div>
+        <div id="write"></div>
+    </div>
+
+    <script>
+        function update(){
+            var element1 = document.getElementById("r").value;
+            var element2 = document.getElementById("g").value;
+            var element3 = document.getElementById("b").value;
+
+            document.getElementById('write').innerHTML = "RGB: (" + element1 + "," + element2 + "," + element3 + ")";
+            document.getElementById("block").style.backgroundColor = "rgb(" + element1 + "," + element2 + "," + element3 + ")";
+        }
+
+        //Converting RGB to Hex
+        var hexDigits = new Array
+        ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"); 
+
+        //Function to convert rgb color to hex format
+        function rgb2hex(rgb) {
+            rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+        }
+
+        function hex(x) {
+            return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
